@@ -53,12 +53,16 @@ def Read_function():
         print(colonnes, "\n")
 
 def Update_function(): #Work ici, j'aimerais, savoir, comment je peux le faire pour le faire fonctionner..
-    cursor.execute("PRAGMA table_info(pc)")
-    cursor.fetchall()
+    Read_function()
+    name = input("Quel est le nom de là Mettre à jour ?: ")
+    name_column = input("Quel est le nom de la colonne que tu veux Mettre à jour ?: ")
+    new_value = input("Quel sera ça nouvelle valeur ?: ")
+    cursor.execute("UPDATE pc SET {name_column} = ? WHERE name = ?",
+        (new_value, name)
+    )
     db.commit()
 
 if __name__ == "__main__" :
-    print(cursor.fetchall())
     Insert_function()
     Update_function()
     Read_function()
