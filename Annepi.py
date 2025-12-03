@@ -46,23 +46,51 @@ def Supp_function():
 def Read_function():
     name = input("Quel est le nom de l'objet à lire ?: ")
     cursor.execute("SELECT * FROM pc WHERE name = ?",
-        (name)
+        (name,)
     )
-    colonnes = cursor.description[0]
-    for i in colonnes :
-        print(colonnes, "\n")
+    description = cursor.fetchone()
+    print(description)
+
+def Show_proprieties(name):
+    cursor.execute("SELECT * FROM pc WHERE name = ?",
+        (name,)
+    )
+    cols = cursor.description #pour récupérer
+    print(f"Listes des propriétés de {name} : ", end="")
+    for i in cols :
+        print(f"[{i[0]}] ", end="")
+    print("\n")
+
+
+def Show_all():
+    cursor.execute("SELECT * FROM pc")
+    rows = cursor.fetchall()
+
+    for row in rows:
+        print(row)
+
+def Erase_all():
+    cursor.execute("DELETE FROM pc",)
+    db.commit() #save
+    print("Everything was deleted..")
 
 def Update_function(): #Work ici, j'aimerais, savoir, comment je peux le faire pour le faire fonctionner..
-    Read_function()
-    name = input("Quel est le nom de là Mettre à jour ?: ")
+    name = input("Quel est le nom à Mettre à jour ?: ")
+    Show_proprieties(name)
     name_column = input("Quel est le nom de la colonne que tu veux Mettre à jour ?: ")
     new_value = input("Quel sera ça nouvelle valeur ?: ")
-    cursor.execute("UPDATE pc SET {name_column} = ? WHERE name = ?",
+    cursor.execute(f"UPDATE pc SET {name_column} = ? WHERE name = ?",
         (new_value, name)
     )
     db.commit()
 
 if __name__ == "__main__" :
+    # Erase_all()
+    # Show_all()
     Insert_function()
+    Show_all()
+    Read_function()
     Update_function()
     Read_function()
+    # name = input("Quel est le nom de là Mettre à jour ?: ")
+    # Show_proprieties(name)
