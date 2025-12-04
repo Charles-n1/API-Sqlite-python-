@@ -1,18 +1,6 @@
 import sqlite3
 from Annepi import db, cursor
 
-cursor.execute(
-    """CREATE TABLE IF NOT EXISTS pc (
-        id INTEGER PRIMARY KEY,
-        name TEXT,
-        état INTEGER,
-        type_experience INTEGER,
-        type_pc INTEGER,
-        portabilité INTEGER
-    )
-    """
-)
-
 def Insert_function():
     name = input("Donne lui un nom: ")
     état = input("Disponible (1) ou Indisponible (0) ?: ")
