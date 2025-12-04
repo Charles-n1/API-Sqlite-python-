@@ -100,10 +100,13 @@ def user_input(string):
     if string == "9":
         return -1
     else :
-        Insert_function()
+        print("Le programme n'a pas compris ce que vous avez entrée.")
+        print("Est-ce que vous êtes sûr que vous avez entrée un chiffre ?")
 
 if __name__ == "__main__" :
-    User_choice = input("Que voulez-vous ? Insérer une valeur parmi les actions associés: \nINSERT (0), READ (1), DELETE (2), UPDATE (3), SHOW_DB (4), ERASE_DB (5), EXIT (9)")
+    User_choice = input("Que voulez-vous ? Insérer une valeur parmi les actions associés: \nINSERT (0), READ (1), DELETE (2), UPDATE (3), SHOW_DB (4), ERASE_DB (5), EXIT (9)\n:")
     while User_choice != "9" :
         if user_input(User_choice) == -1:
             break
+        User_choice = input("Que voulez-vous faire ensuite ?\nINSERT (0), READ (1), DELETE (2), UPDATE (3), SHOW_DB (4), ERASE_DB (5), EXIT (9)\n:")
+
