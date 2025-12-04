@@ -1,14 +1,43 @@
 from variables import *
 
+def name_already_exist(name):
+    cursor.execute("SELECT * FROM pc WHERE name = ?",
+        (name,)
+    )
+    existing_name = cursor.fetchone()
+    if existing_name[1] == None:
+        print("\n\nVide")
+    # if name == existing_name[1] :
+    #     return True
+    # else :
+    #     return False
+
 def Insert_function():
     name = input("Donne lui un nom: ") #Demande les inputs à rentrer
-    état = input("Disponible (1) ou Indisponible (0) ?: ")
-    type_experience = input("Expérience ? (1) Oui (0) Non ?: ")
-    type_pc = input("Pc Puissant (1) Pc de bureautique (0) ?: ")
-    portabilité = input("Fixe (1) Ou Portable (0) ?: ")
-
-    cursor.execute("INSERT INTO pc(name, état, type_experience, type_pc, portabilité) VALUES (?, ?, ?, ?, ?)", #Insère avec les valeurs données
-        (name, état, type_experience, type_pc, portabilité)
+    if name_already_exist(name) == True:
+        print(f"{name} already exist")
+        return -1
+    # état = input("Disponible (1) ou Indisponible (0) ?: ")
+    # if état != "0" and état != "1":
+    #     print("Caractère invalide")
+    #     return -1
+    # type_experience = input("Expérience ? (1) Oui (0) Non ?: ")
+    # if type_experience != "0" and type_experience != "1":
+    #     print("Caractère invalide")
+    #     return -1
+    # type_pc = input("Pc Puissant (1) Pc de bureautique (0) ?: ")
+    # if type_pc != "0" and type_pc != "1":
+    #     print("Caractère invalide")
+    #     return -1
+    # portabilité = input("Fixe (1) Ou Portable (0) ?: ")
+    # if portabilité != "0" and portabilité != "1":
+    #     print("Caractère invalide")
+    #     return -1
+    # cursor.execute("INSERT INTO pc(name, état, type_experience, type_pc, portabilité) VALUES (?, ?, ?, ?, ?)", #Insère avec les valeurs données
+    #     (name, état, type_experience, type_pc, portabilité)
+    # )
+    cursor.execute("INSERT INTO pc(name) VALUES (?)", #Insère avec les valeurs données
+        (name,)
     )
     db.commit() #save
     print(name, "a été ajouté !")
