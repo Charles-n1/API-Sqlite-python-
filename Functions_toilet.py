@@ -1,2 +1,0 @@
-def hihi():
-    print("hi")
