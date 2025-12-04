@@ -84,13 +84,26 @@ def Update_function(): #Work ici, j'aimerais, savoir, comment je peux le faire p
     )
     db.commit()
 
+def user_input(string):
+    if string == "0":
+        Insert_function()
+    if string == "1":
+        Read_function()
+    if string == "2":
+        Supp_function()
+    if string == "3":
+        Update_function()
+    if string == "4":
+        Show_all()
+    if string == "5":
+        Erase_all()
+    if string == "9":
+        return -1
+    else :
+        Insert_function()
+
 if __name__ == "__main__" :
-    # Erase_all()
-    # Show_all()
-    Insert_function()
-    Show_all()
-    Read_function()
-    Update_function()
-    Read_function()
-    # name = input("Quel est le nom de là Mettre à jour ?: ")
-    # Show_proprieties(name)
+    User_choice = input("Que voulez-vous ? Insérer une valeur parmi les actions associés: \nINSERT (0), READ (1), DELETE (2), UPDATE (3), SHOW_DB (4), ERASE_DB (5), EXIT (9)")
+    while User_choice != "9" :
+        if user_input(User_choice) == -1:
+            break
