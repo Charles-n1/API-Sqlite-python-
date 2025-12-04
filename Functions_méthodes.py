@@ -1,5 +1,4 @@
-import sqlite3
-from Annepi import db, cursor
+from variables import *
 
 def Insert_function():
     name = input("Donne lui un nom: ")
