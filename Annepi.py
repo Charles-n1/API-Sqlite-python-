@@ -8,6 +8,7 @@
 
 from Functions_méthodes import *
 from variables import *
+from Instructions.Insert_Function import *
 
 def redirect_function(string):
     if string == "0":
