@@ -9,6 +9,7 @@
 from Instructions.Functions_méthodes import *
 from variables import *
 from Instructions.Insert_Function import *
+from Instructions.Filt_Function import *
 import os
 
 def clear():
@@ -28,6 +29,8 @@ def redirect_function(string):  # En fonction de l'input (0,1,2,3,4,5,9) on éx�
         Show_all()
     elif string == "5":
         Erase_all()
+    elif string == "6":
+        Filt_function()
     elif string == "9":
         return -1
     else :
@@ -40,5 +43,5 @@ if __name__ == "__main__" :
         clear()
         if redirect_function(User_choice) == -1:
             break
-        User_choice = input("Que voulez-vous faire ensuite ?\nINSERT (0), READ (1), DELETE (2), UPDATE (3), SHOW_DB (4), ERASE_DB (5), EXIT (9)\n:")
+        User_choice = input("Que voulez-vous faire ensuite ?\nINSERT (0), READ (1), DELETE (2), UPDATE (3), SHOW_DB (4), ERASE_DB (5), FILTRATE (6), EXIT (9)\n:")
 
