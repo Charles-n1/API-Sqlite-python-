@@ -9,7 +9,7 @@ def name_already_exist(name):
     else :
         return True
 
-def Is_binary(variable_input):                       #Vérifie, si la string input, est un 0 ou un 1.
+def Is_binary(variable_input):                        #Vérifie, si la string input, est un 0 ou un 1.
     if variable_input != "0" and variable_input != "1":
         print("Caractère invalide : Vous n'avez pas écrit 0 ou 1..")
         return False
