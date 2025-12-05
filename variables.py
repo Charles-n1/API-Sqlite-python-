@@ -10,7 +10,7 @@ import sqlite3
 db = sqlite3.connect("Base_de_donnée.db")
 cursor = db.cursor()
 
-cursor.execute(
+cursor.execute( # Le type de variable PC
     """CREATE TABLE IF NOT EXISTS pc (
         id INTEGER PRIMARY KEY,
         name TEXT,

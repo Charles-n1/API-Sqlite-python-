@@ -1,7 +1,7 @@
 from variables import *
 
-def name_already_exist(name):
-    cursor.execute("SELECT * FROM pc WHERE name = ?", #On regarde, si le nom exsite déjà
+def name_already_exist(name): #On regarde, si le nom exsite déjà
+    cursor.execute("SELECT * FROM pc WHERE name = ?",
         (name,)
     )
     if cursor.fetchone() == None:                     #Si, le nom n'a pas été trouvé, on renvoie faux (car le name n'existe pas), et true
@@ -26,8 +26,8 @@ def Binary_to_string(état, type_experience, type_pc, portabilité):
     else : portabilité = "Fixe"
     return état, type_experience, type_pc, portabilité
 
-def Is_Good_input(name, état, type_experience, type_pc, portabilité):
-    if name_already_exist(name) == True:              #Gestion d'erreur si, ça existe déjà
+def Is_Good_input(name, état, type_experience, type_pc, portabilité): #Gestion d'erreur si, ça existe déjà
+    if name_already_exist(name) == True:
         print(f"{name} already exist")
         return -1
     if Is_binary(état) == False: return -1
@@ -35,18 +35,18 @@ def Is_Good_input(name, état, type_experience, type_pc, portabilité):
     if Is_binary(type_pc) == False: return -1
     if Is_binary(portabilité) == False: return -1
 
-def Insert_function():
-    name = input("Donne lui un nom: ")                #Demande les inputs à rentrer
+def Insert_function(): #Insertion des données
+    name = input("Donne lui un nom: ")                #1) Demande les inputs à rentrer
     état = input("Disponible (1) ou Indisponible (0) ?: ")
     type_experience = input("Expérience ? : (1) Oui (0) Non ?: ")
     type_pc = input("Pc Puissant (1) Pc de bureautique (0) ?: ")
     portabilité = input("Fixe (1) Ou Portable (0) ?: ")
 
-    if Is_Good_input(name, état, type_experience, type_pc, portabilité) == -1: # Vérifie si les inputs sont bons
+    if Is_Good_input(name, état, type_experience, type_pc, portabilité) == -1: #2) Vérifie si les inputs sont bons
         return -1
-    état, type_experience, type_pc, portabilité = Binary_to_string(état, type_experience, type_pc, portabilité) # Rendre les bonnes valeurs, aux valeurs entrées. (Pour facilité, l'entrée utilisateur)
+    état, type_experience, type_pc, portabilité = Binary_to_string(état, type_experience, type_pc, portabilité) #3) Rendre les bonnes valeurs, aux valeurs entrées. (Pour facilité, l'entrée utilisateur)
 
-    cursor.execute("INSERT INTO pc(name, état, type_experience, type_pc, portabilité) VALUES (?, ?, ?, ?, ?)", #Insère avec les valeurs données
+    cursor.execute("INSERT INTO pc(name, état, type_experience, type_pc, portabilité) VALUES (?, ?, ?, ?, ?)", #4) Insère avec les valeurs données
         (name, état, type_experience, type_pc, portabilité)
     )
     db.commit() #save

@@ -9,8 +9,13 @@
 from Instructions.Functions_méthodes import *
 from variables import *
 from Instructions.Insert_Function import *
+import os
 
-def redirect_function(string):
+def clear():
+    os.system("cls" if os.name == "nt" else "clear")
+
+
+def redirect_function(string):  # En fonction de l'input (0,1,2,3,4,5,9) on éxécute la fonction associée
     if string == "0":
         Insert_function()
     elif string == "1":
