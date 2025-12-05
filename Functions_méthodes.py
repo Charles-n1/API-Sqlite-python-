@@ -1,40 +1,41 @@
 from variables import *
+import os
+
+def clear():
+    os.system("cls" if os.name == "nt" else "clear")
 
 def name_already_exist(name):
     cursor.execute("SELECT * FROM pc WHERE name = ?", #On regarde, si le nom exsite déjà
         (name,)
     )
-    if cursor.fetchone() == None:                   #Si, le nom n'a pas été trouvé, on renvoie faux (car le name n'existe pas), et true
+    if cursor.fetchone() == None:                     #Si, le nom n'a pas été trouvé, on renvoie faux (car le name n'existe pas), et true
         return False
     else :
         return True
 
 def Is_binary(variable_input):                       #Vérifie, si la string input, est un 0 ou un 1.
     if variable_input != "0" and variable_input != "1":
-        print("Caractère invalide")
+        print("Caractère invalide : Vous n'avez pas écrit 0 ou 1..")
         return False
     return True
 
 def Insert_function():
-    name = input("Donne lui un nom: ")             #Demande les inputs à rentrer
-    if name_already_exist(name) == True:
+    name = input("Donne lui un nom: ")                #Demande les inputs à rentrer
+    état = input("Disponible (1) ou Indisponible (0) ?: ")
+    type_experience = input("Expérience ? (1) Oui (0) Non ?: ")
+    type_pc = input("Pc Puissant (1) Pc de bureautique (0) ?: ")
+    portabilité = input("Fixe (1) Ou Portable (0) ?: ")
+    if name_already_exist(name) == True:              #Gestion d'erreur si, ça existe déjà
         print(f"{name} already exist")
         return -1
-    état = input("Disponible (1) ou Indisponible (0) ?: ")
     if Is_binary(état) == False: return -1
-    type_experience = input("Expérience ? (1) Oui (0) Non ?: ")
     if Is_binary(type_experience) == False: return -1
-    type_pc = input("Pc Puissant (1) Pc de bureautique (0) ?: ")
     if Is_binary(type_pc) == False: return -1
-    portabilité = input("Fixe (1) Ou Portable (0) ?: ")
     if Is_binary(portabilité) == False: return -1
 
     cursor.execute("INSERT INTO pc(name, état, type_experience, type_pc, portabilité) VALUES (?, ?, ?, ?, ?)", #Insère avec les valeurs données
         (name, état, type_experience, type_pc, portabilité)
     )
-    # cursor.execute("INSERT INTO pc(name) VALUES (?)", #Insère avec les valeurs données
-    #     (name,)
-    # )
     db.commit() #save
     print(name, "a été ajouté !")
 
@@ -68,7 +69,6 @@ def Show_proprieties(name):
 def Show_all():
     cursor.execute("SELECT * FROM pc")                       #On prends tous
     rows = cursor.fetchall()
-
     for row in rows:                                         #On affiche colonne par colonne
         print(row)
 
