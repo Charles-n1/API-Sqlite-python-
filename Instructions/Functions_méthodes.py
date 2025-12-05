@@ -34,7 +34,6 @@ def Show_proprieties(name):
         print(f"[{i[0]}] ", end="")
     print("\n")
 
-
 def Show_all():
     cursor.execute("SELECT * FROM pc")                       #On prends tous
     rows = cursor.fetchall()

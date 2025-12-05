@@ -6,7 +6,7 @@
 ##
 
 
-from Functions_méthodes import *
+from Instructions.Functions_méthodes import *
 from variables import *
 from Instructions.Insert_Function import *
 
