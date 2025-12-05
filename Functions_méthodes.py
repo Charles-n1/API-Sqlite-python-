@@ -22,15 +22,22 @@ def Is_binary(variable_input):                       #Vérifie, si la string inp
 def Binary_to_string(état, type_experience, type_pc, portabilité):
     if état == "0": état = "Indisponible"
     else : état = "Disponible"
-    if type_experience == "0": type_experience = "Expérience"
-    else : type_experience = "Non Expérience"
+    if type_experience == "0": type_experience = "Non Expérience"
+    else : type_experience = "Expérience"
     if type_pc == "0": type_pc = "Bureautique"
     else : type_pc = "Gamer"
     if portabilité == "0": portabilité = "Portable"
     else : portabilité = "Fixe"
     return état, type_experience, type_pc, portabilité
 
-def Gestion_erreur()
+def Is_Good_input(name, état, type_experience, type_pc, portabilité):
+    if name_already_exist(name) == True:              #Gestion d'erreur si, ça existe déjà
+        print(f"{name} already exist")
+        return -1
+    if Is_binary(état) == False: return -1
+    if Is_binary(type_experience) == False: return -1
+    if Is_binary(type_pc) == False: return -1
+    if Is_binary(portabilité) == False: return -1
 
 def Insert_function():
     name = input("Donne lui un nom: ")                #Demande les inputs à rentrer
@@ -39,15 +46,9 @@ def Insert_function():
     type_pc = input("Pc Puissant (1) Pc de bureautique (0) ?: ")
     portabilité = input("Fixe (1) Ou Portable (0) ?: ")
 
-    if name_already_exist(name) == True:              #Gestion d'erreur si, ça existe déjà
-        print(f"{name} already exist")
+    if Is_Good_input(name, état, type_experience, type_pc, portabilité) == -1: # Vérifie si les inputs sont bons
         return -1
-    if Is_binary(état) == False: return -1
-    if Is_binary(type_experience) == False: return -1
-    if Is_binary(type_pc) == False: return -1
-    if Is_binary(portabilité) == False: return -1
-                                                        # Rendre les bonnes valeurs, aux valeurs entrées. (Pour facilité, l'entrée utilisateur)
-    état, type_experience, type_pc, portabilité = Binary_to_string(état, type_experience, type_pc, portabilité)
+    état, type_experience, type_pc, portabilité = Binary_to_string(état, type_experience, type_pc, portabilité) # Rendre les bonnes valeurs, aux valeurs entrées. (Pour facilité, l'entrée utilisateur)
 
     cursor.execute("INSERT INTO pc(name, état, type_experience, type_pc, portabilité) VALUES (?, ?, ?, ?, ?)", #Insère avec les valeurs données
         (name, état, type_experience, type_pc, portabilité)
