@@ -38,7 +38,7 @@ def redirect_function(string):  # En fonction de l'input (0,1,2,3,4,5,9) on éx�
         print("Est-ce que vous êtes sûr que vous avez entrée un chiffre ?")
 
 if __name__ == "__main__" :
-    User_choice = input("Que voulez-vous ? Insérer une valeur parmi les actions associés: \nINSERT (0), READ (1), DELETE (2), UPDATE (3), SHOW_DB (4), ERASE_DB (5), EXIT (9)\n:")
+    User_choice = input("Que voulez-vous ? Insérer une valeur parmi les actions associés: \nINSERT (0), READ (1), DELETE (2), UPDATE (3), SHOW_DB (4), ERASE_DB (5), FILTRATE (6), EXIT (9)\n:")
     while User_choice != "9" :
         clear()
         if redirect_function(User_choice) == -1:
