@@ -4,6 +4,18 @@ def Filt_function():
     print("Vous rentrez dans le filtrage..\n=========================================\n")
     print("Vous voulez voir un résultat d'un type de colonne spécifique ? (0)\n Ou voulez vous voir en fonction de plusieurs résultats de plusieurs colonnes ? (1)\nExample : Vous ne voulez voir que les ordinateurs disponibles..")
 
+
+
+
+
+
+
+
+
+
+
+
+
 # Lobjectif, c'est de demander, Oui, il veut ça, non il veut pas ça. Et en fonction de ses réponses, on va le rediriger vers une fonction préfaites : 
 #     cursor.execute("SELECT * FROM pc WHERE état = ?",          #Si il cherche unique en fonction du l'état (une colonne)
 #           (état,)
