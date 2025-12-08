@@ -1,34 +1,16 @@
 from variables import *
 
 def Filt_function():
-    print("Vous rentrez dans le filtrage..\n=========================================\n")
-    print("Vous voulez voir un résultat d'un type de colonne spécifique ? (0)\n Ou voulez vous voir en fonction de plusieurs résultats de plusieurs colonnes ? (1)\nExample : Vous ne voulez voir que les ordinateurs disponibles..")
+    print("===========================================================")
+    print("Il y a 3 principaux filtres : \n1) En fonction de la valeur de la propriété (Example : état : disponible)")
+    print("En fonction, de l'ordre de output (décroissant / croissant)")
+    print("Et en fonction, du nombre de résultat que vous voulez voir affiché")
+    print("===========================================================\n")
+
+    input("Vous-voulez trier en fonction d'une valeur spécifique à une propriété ? Oui (1) Non (0)")
+    input("")
+    input("Vous-voulez en plus de ça, d'y mettre un ordre d'affichage (Croissant/décroissant) ? Oui (1) Non (0)")
+    input("Vous-voulez en plus (une dernière fois), afficher un nombre limité de cet recherche ? Oui (1) Non (0)")
 
 
-
-
-
-
-
-
-
-
-
-
-
-# Lobjectif, c'est de demander, Oui, il veut ça, non il veut pas ça. Et en fonction de ses réponses, on va le rediriger vers une fonction préfaites : 
-#     cursor.execute("SELECT * FROM pc WHERE état = ?",          #Si il cherche unique en fonction du l'état (une colonne)
-#           (état,)
-#       )
-
-#       cursor.execute("SELECT type_pc, COUNT(*) FROM pc GROUP BY type_pc",          #Si il cherche plus complexe
-#           (état,)
-#       )
-
-# En gros, le truc, ce sera un gros QCM. Où on devra dissocier, les résultats qu'apporte les filtres de SELECT. Avec, en fonction de ce que les mortels touchent
-# Example : La fonction read, elle read pas réellement, elle sélectionne, puis on l'affiche, pour faire semblant de..
-# C'est la même chose, ici, y'a des filtres, ils sont pas spécialmeent compréhensible, mais en fonction de ce que l'on va résulté. On va dire à l'user : 
-# Voulez-vous trier la chose ? Alors que c'est pas du tout ça, la fonction SELECT de base.
-
-# Les données, on va les stoquer dans une variable pour l'instant (si j'ai bien compris, ce que Arnaud m'a demandé)
 
