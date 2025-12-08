@@ -2,6 +2,24 @@ from variables import *
 from Instructions.Insert_Function import Is_binary
 
 def Filt_function():
+    """
+    Elle permet de filtrer les informations de manières différentes en fonction de 3 paramètres :
+    1) Quelle valeur de la propriété de pc chercher ?
+    2) Quelle Ordre ? (Croissant décroissant)
+    3) Avec une limite d'affichage ? (2 par exemples)
+
+    Args:
+        "Input 1": la propriété cherché
+        "Input 2": 0/1 (Non/Oui) Veux-tu trier en fonction de la valeur de la propriété ?
+        "Input 3": Si Oui : Valeur de la propriété ?
+        "Input 4": 0/1 (Non, Oui) (veux-tu un ordre ?)
+        "Input 5": Si Oui : Décroissant ou Croissant ?
+        "Input 6": 0/1 (Non/Oui) Imposer une limite d'affichage ?
+        "Input 7": Si Oui : Nombre d'éléments à afficher ?
+
+    Returns:
+        Les informations filtrées.
+    """
     print("===========================================================")
     print("Il y a 3 principaux filtres : \n1) En fonction de la valeur de la propriété (Example : état : disponible)")
     print("2) En fonction, de l'ordre de output (décroissant / croissant)")
@@ -35,18 +53,8 @@ def Filt_function():
     # print(f"{Query}")
     cursor.execute(f"{Query}")
     rows = cursor.fetchall()
-    for row in rows:                                         #On affiche tous colonne par colonne
+    for row in rows:                                         #On affiche tous colonne par colonne et on stocke dans rows
         print(row)
 
-
-
-# if Option_1 == 1 and Option_2 == 1 and Option_3 == 1: #Dans le cas où tout est activé
-#     cursor.execute("SELECT * FROM pc WHERE ? = ? ORDER BY ? LIMIT ?",
-#         (name_col, Answer_1, Answer_2, Answer_3,)
-#     )
-# if Option_1 == 1 and Option_2 == 0 and Option_3 == 0: #Dans le cas où tout est activé
-#     cursor.execute("SELECT * FROM pc WHERE ? = ? ORDER BY ? LIMIT ?",
-#         (name_col, Answer_1, Answer_2, Answer_3,)
-#     )
-
-#SELECT * FROM pc WHERE name = valeur ORDER BY ? LIMIT ?
+# Afficher les résultats des propriétés ? Pour bien les tapers ?
+# Message d'erreur quand mauvais input
