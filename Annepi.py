@@ -40,8 +40,8 @@ def redirect_function(string):  # En fonction de l'input (0,1,2,3,4,5,9) on √©x√
 if __name__ == "__main__" :
 
 
-    cursor.execute("INSERT INTO image(name, path) VALUES (?, ?)" #INSERTION D'image ici
-        ("Skibidi_toilet", "Images/Skibidi_Toilet_Normal.jpg")
+    cursor.execute("INSERT INTO image(name, path) VALUES (?, ?)", #INSERTION D'image ici
+        ("Skibidi_toilet", "Images/Skibidi_Toilet_Normal.jpg",)
     )
 
 

@@ -17,7 +17,8 @@ cursor.execute( # Le type de variable PC
         état INTEGER,
         type_experience INTEGER,
         type_pc INTEGER,
-        portabilité INTEGER
+        portabilité INTEGER,
+        date TEXT
     )
     """
 )
@@ -26,7 +27,7 @@ cursor.execute( # Le type de variable Image
     """CREATE TABLE IF NOT EXISTS image (
         id INTEGER PRIMARY KEY,
         name TEXT,
-        path TEXT,
+        path TEXT
     )
     """
 )

@@ -41,13 +41,14 @@ def Insert_function(): #Insertion des données
     type_experience = input("Expérience ? : (1) Oui (0) Non ?: ")
     type_pc = input("Pc Puissant (1) Pc de bureautique (0) ?: ")
     portabilité = input("Fixe (1) Ou Portable (0) ?: ")
+    date = input("Donne-moi une date sous la forme : YYYY-MM-DD HH:mm:ss: ")
 
     if Is_Good_input(name, état, type_experience, type_pc, portabilité) == -1: #2) Vérifie si les inputs sont bons
         return -1
     état, type_experience, type_pc, portabilité = Binary_to_string(état, type_experience, type_pc, portabilité) #3) Rendre les bonnes valeurs, aux valeurs entrées. (Pour facilité, l'entrée utilisateur)
 
-    cursor.execute("INSERT INTO pc(name, état, type_experience, type_pc, portabilité) VALUES (?, ?, ?, ?, ?)", #4) Insère avec les valeurs données
-        (name, état, type_experience, type_pc, portabilité)
+    cursor.execute("INSERT INTO pc(name, état, type_experience, type_pc, portabilité, date) VALUES (?, ?, ?, ?, ?, ?)", #4) Insère avec les valeurs données
+        (name, état, type_experience, type_pc, portabilité, date)
     )
     db.commit() #save
     print(name, "a été ajouté !")
