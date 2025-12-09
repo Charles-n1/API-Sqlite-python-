@@ -27,39 +27,36 @@ def Filt_function():
     print("===========================================================\n")
     Query = "SELECT * FROM pc"
 
-    input("Vous-voulez trier dans l'odre des dates ? Non (0) Croissant (1) Décroissant (2)")
-    cursor.execute("SELECT * FROM pc ORDER BY date(date) DESC")
-    rows = cursor.fetchall()
-    for row in rows:                                         #On affiche tous colonne par colonne
-        print(row)
-    # name_col = input("Quel est le nom de propriété que vous cherchez à manipuler ?: ")
-    # Access_1 = input("Vous-voulez trier en fonction d'une valeur spécifique à une propriété ? Oui (1) Non (0): ")
-    # if Is_binary(Access_1) == False: return -1
-    # if Access_1 == "1":
-    #     Answer_1 = input("Quelles est la valeur que vous cherchez ?: ")
-    #     Query += f" WHERE {name_col} = '{Answer_1}'"
+    name_col = input("Quel est le nom de propriété que vous cherchez à manipuler ?: ")
+    Access_1 = input("Vous-voulez trier en fonction d'une valeur spécifique à une propriété ? Oui (1) Non (0): ")
+    if Is_binary(Access_1) == False: return -1
+    if Access_1 == "1":
+        Answer_1 = input("Quelles est la valeur que vous cherchez ?: ")
+        Query += f" WHERE {name_col} = '{Answer_1}'"
 
-    # Access_2 = input("Vous-voulez en plus de ça, y mettre un ordre d'affichage (Croissant/décroissant) ? Oui (1) Non (0): ")
-    # if Is_binary(Access_2) == False: return -1
-    # if Access_2 == "1":
-    #     Answer_2 = input("Plutôt, Croissant (1) ou Décroissant (0) ?: ")
-    #     if Answer_2 == "1":
-    #         Answer_2 = "ASC"
-    #     else :
-    #         Answer_2 = "DESC"
-    #     Query += f" ORDER BY name {Answer_2}"
+    Access_2 = input("Ordre d'affichage ? Non (0) Alphabétique (1) Antéalphabétique (2) Date Croissant (3) Date Décroissant (4): ")
+    if Access_2 != "0":
+        if Access_2 == "1":
+            Answer_2 = "name ASC"
+        elif Access_2 == "2":
+            Answer_2 = "name DESC"
+        elif Access_2 == "3":
+            Answer_2 = "date(date) ASC"
+        elif Access_2 == "4":
+            Answer_2 = "date(date) DESC"
+        Query += f" ORDER BY {Answer_2}"
 
-    # Access_3 = input("Vous-voulez en plus (une dernière fois), afficher un nombre limité de cet recherche ? Oui (1) Non (0): ")
-    # if Is_binary(Access_3) == False: return -1
-    # if Access_3 == "1":
-    #     Answer_3 = input("Combien de résultat vous voulez voir afficher ?: ")
-    #     Query += f" LIMIT {Answer_3}"
+    Access_3 = input("Vous-voulez en plus (une dernière fois), afficher un nombre limité de cet recherche ? Oui (1) Non (0): ")
+    if Is_binary(Access_3) == False: return -1
+    if Access_3 == "1":
+        Answer_3 = input("Combien de résultat vous voulez voir afficher ?: ")
+        Query += f" LIMIT {Answer_3}"
 
     # # print(f"{Query}")
-    # cursor.execute(f"{Query}")
-    # rows = cursor.fetchall()
-    # for row in rows:                                         #On affiche tous colonne par colonne et on stocke dans rows
-    #     print(row)
+    cursor.execute(f"{Query}")
+    rows = cursor.fetchall()
+    for row in rows:                                         #On affiche tous colonne par colonne et on stocke dans rows
+        print(row)
 
 # Afficher les résultats des propriétés ? Pour bien les tapers ?
 # Message d'erreur quand mauvais input
