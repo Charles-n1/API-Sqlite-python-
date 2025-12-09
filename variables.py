@@ -21,3 +21,12 @@ cursor.execute( # Le type de variable PC
     )
     """
 )
+
+cursor.execute( # Le type de variable Image
+    """CREATE TABLE IF NOT EXISTS image (
+        id INTEGER PRIMARY KEY,
+        name TEXT,
+        path TEXT,
+    )
+    """
+)
