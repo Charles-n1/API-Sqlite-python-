@@ -12,10 +12,9 @@ def Filt_function():
         "Input 1": la propriété cherché
         "Input 2": 0/1 (Non/Oui) Veux-tu trier en fonction de la valeur de la propriété ?
         "Input 3": Si Oui : Valeur de la propriété ?
-        "Input 4": 0/1 (Non, Oui) (veux-tu un ordre ?)
-        "Input 5": Si Oui : Décroissant ou Croissant ?
-        "Input 6": 0/1 (Non/Oui) Imposer une limite d'affichage ?
-        "Input 7": Si Oui : Nombre d'éléments à afficher ?
+        "Input 4": 0/1/2/3 Pas ordre, Ordre alphabétique, Ordre Antéalphabétique, Date croissant, Date décroissant
+        "Input 5": 0/1 (Non/Oui) Imposer une limite d'affichage ?
+        "Input 6": Si Oui : Nombre d'éléments à afficher ?
 
     Returns:
         Les informations filtrées.
