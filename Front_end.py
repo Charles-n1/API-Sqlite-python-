@@ -10,7 +10,6 @@ import sqlite3
 
 app = Flask(__name__)
 
-
 def get_db():
     db = sqlite3.connect("Alpha_version/Base_de_donnée.db") #Car Flask est continu, alors que mon prog originel ne s'active qu'une fois.
     cursor = db.cursor()
