@@ -5,18 +5,17 @@
 ## Front_end
 ##
 
-from flask import Flask, render_template, jsonify, request
-import sqlite3
+from flask import Flask
 
 app = Flask(__name__)
 
-@app.route("/read", methods=["POST"])
-def read():
-    db = sqlite3.connect("Alpha_version/Base_de_donnée.db")
-    cursor = db.cursor()
+@app.route("/")
+def main():
+    return "hello BIRTHDAY"
 
-    name = request.form["Quel est le nom à lire ?: "]
-    cursor.execute("SELECT * FROM pc WHERE name = ?",          #SELECT toutes les doonées
-        (name,)
-    )
-    return jsonify(cursor.fetchone())
+@app.route("insert")
+def test():
+    return "hello shit"
+
+if __name__ == "__main__":
+    app.run(debug=True)
