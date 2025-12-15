@@ -4,28 +4,29 @@
 ## File description:
 ## Front_end
 ##
-
 from flask import Flask
 import sqlite3
 
 app = Flask(__name__)
 
-
 def get_db():
-    db = sqlite3.connect("Alpha_version/Base_de_donnée.db") #Car Flask est continu, alors que mon prog originel ne s'active qu'une fois.
-    cursor = db.cursor()
-    return cursor
+    db = sqlite3.connect("Alpha_version/Base_de_donnée.db")
+    db.row_factory = sqlite3.Row  # ← Nécessaire pour dict(row)
+    return db
 
 @app.route("/")
 def main():
     return "hello BIRTHDAY"
 
 @app.route("/read")
-def Show_all(): #Littéralement la même, sauf..
-    cursor = get_db() #Je dois juste accéder à la DB
+def test():
+    db = get_db()
+    cursor = db.cursor()
     cursor.execute("SELECT * FROM pc")
     rows = cursor.fetchall()
-    return rows
+    db.close()
+    result = [dict(row) for row in rows]
+    return result
 
 if __name__ == "__main__":
     app.run(debug=True)
