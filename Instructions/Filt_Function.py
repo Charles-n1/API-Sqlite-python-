@@ -40,9 +40,9 @@ def Filt_function():
         elif Access_2 == "2":
             Answer_2 = "name DESC"
         elif Access_2 == "3":
-            Answer_2 = "date(date) ASC"
+            Answer_2 = "datetime(date) ASC"
         elif Access_2 == "4":
-            Answer_2 = "date(date) DESC"
+            Answer_2 = "datetime(date) DESC"
         Query += f" ORDER BY {Answer_2}"
 
     Access_3 = input("Vous-voulez en plus (une dernière fois), afficher un nombre limité de cet recherche ? Oui (1) Non (0): ")
