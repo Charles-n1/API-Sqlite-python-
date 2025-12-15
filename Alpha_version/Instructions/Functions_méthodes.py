@@ -1,3 +1,10 @@
+##
+## EPITECH PROJECT, 2025
+## API-Sqlite-python-
+## File description:
+## Functions_méthodes
+##
+
 from variables import *
 from Instructions.Insert_Function import name_already_exist
 
