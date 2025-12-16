@@ -4,7 +4,11 @@
         <title>docteur</title>
     </head>
     <body>
-        <h1>Data</h1>
-        <div id="list"></div>
+        <h1>Liste des données </h1>
+        <ol>
+            {%for rows in info_table%}
+                <li>{{rows}} </li>
+            {%endfor%}
+        </ol>
     </body>
 </html>

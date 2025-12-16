@@ -5,7 +5,7 @@
 ## Front_end
 ##
 
-from flask import Flask
+from flask import Flask, render_template
 import sqlite3
 
 app = Flask(__name__)
@@ -24,7 +24,7 @@ def Show_all(): #Littéralement la même, sauf..
     cursor = get_db() #Je dois juste accéder à la DB
     cursor.execute("SELECT * FROM pc")
     rows = cursor.fetchall()
-    return rows
+    return render_template("doc.html", info_table=rows)
 
 if __name__ == "__main__":
     app.run(debug=True)
