@@ -5,7 +5,7 @@
 ## Front_end
 ##
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import sqlite3
 
 app = Flask(__name__)
@@ -19,7 +19,7 @@ def get_db():
 def main():
     return "hello BIRTHDAY"
 
-@app.route("/show_bd")
+@app.route("/show_all")
 def Show_all(): #Littéralement la même, sauf..
     cursor = get_db() #Je dois juste accéder à la DB
     cursor.execute("SELECT * FROM pc")
@@ -29,9 +29,12 @@ def Show_all(): #Littéralement la même, sauf..
 @app.route("/read", methods=["GET", "POST"])
 def read_function():
     if request.method == "POST":
-        name = request.form.get("name")
-        # le code sqlite3
-        return "hello dude"
+        name = request.form.get("nom")
+        cursor = get_db()
+        cursor.execute("SELECT * FROM pc WHERE name = ?",          #SELECT toutes les doonées
+            (name,)
+        )
+        return jsonify(cursor.fetchone())
     return render_template("read.html")
 
 
