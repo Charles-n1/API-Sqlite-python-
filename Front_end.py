@@ -123,3 +123,6 @@ def Filt_function():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+    # Gestion d'erreur (y'en a masse)
+    # Rendre plus esthétique (1 seul fichier html please)*
