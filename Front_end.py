@@ -37,6 +37,5 @@ def read_function():
         return jsonify(cursor.fetchone())
     return render_template("read.html")
 
-
 if __name__ == "__main__":
     app.run(debug=True)
