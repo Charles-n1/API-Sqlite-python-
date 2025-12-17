@@ -41,6 +41,20 @@ def Read_function():
         return jsonify(cursor.fetchone())
     return render_template("read.html")
 
+@app.route("/delete", methods=["GET", "POST"])
+def Dele_function():
+    if request.method == "POST":
+        db = get_db()
+        cursor = db.cursor()
+        name = request.form.get("nom")
+        cursor.execute("DELETE FROM pc WHERE name = ?",
+            (name,)
+        )
+        db.commit()
+        db.close()
+        return jsonify(f"{name} was deleted")
+    return render_template("dele.html")
+
 @app.route("/insert", methods=["GET", "POST"])
 def Insert_function(): #Insertion des données
     if request.method == "POST":
