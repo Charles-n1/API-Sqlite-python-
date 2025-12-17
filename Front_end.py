@@ -85,6 +85,18 @@ def Insert_function(): #Insertion des données
 
 @app.route("/filter", methods=["GET", "POST"])
 def Filt_function():
+    if request.method == "POST":
+        db = get_db()
+        cursor = db.cursor()
+        Query = "SELECT * FROM pc"
+        name = request.form.get("nom_propriété")
+        value = request.form.get("valeur_propriété")
+        if value != "" and name != "":
+            Query += f" WHERE {name} = '{value}'"
+        cursor.execute(f"{Query}")
+        results = cursor.fetchall()
+        db.close()
+        return jsonify(results)
     return render_template("filter.html")
 
 if __name__ == "__main__":
