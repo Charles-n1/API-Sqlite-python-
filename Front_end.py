@@ -30,6 +30,14 @@ def Show_all(): #Littéralement la même, sauf..
     rows = cursor.fetchall()
     return render_template("doc.html", info_table=rows)
 
+@app.route("/show_all")
+def Erase_all(): #Littéralement la même, sauf..
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("DELETE FROM pc",)
+    db.commit() #save
+    jsonify("Everything was deleted..")
+
 @app.route("/read", methods=["GET", "POST"])
 def Read_function():
     if request.method == "POST":
