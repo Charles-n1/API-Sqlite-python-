@@ -26,8 +26,8 @@ def Filt_function():
     print("===========================================================\n")
     Query = "SELECT * FROM pc"
 
-    name_col = input("Quel est le nom de propriété que vous cherchez à manipuler ?: ")
     Access_1 = input("Vous-voulez trier en fonction d'une valeur spécifique à une propriété ? Oui (1) Non (0): ")
+    name_col = input("Quel est le nom de propriété que vous cherchez à manipuler ?: (si c'est le cas)")
     if Is_binary(Access_1) == False: return -1
     if Access_1 == "1":
         Answer_1 = input("Quelles est la valeur que vous cherchez ?: ")

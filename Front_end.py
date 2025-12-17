@@ -83,5 +83,9 @@ def Insert_function(): #Insertion des données
         return jsonify(f"{name} has been added to the db")
     return render_template("insert.html")
 
+@app.route("/filter", methods=["GET", "POST"])
+def Filt_function():
+    return render_template("filter.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
