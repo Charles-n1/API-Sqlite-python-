@@ -30,13 +30,13 @@ def Show_all(): #Littéralement la même, sauf..
     rows = cursor.fetchall()
     return render_template("doc.html", info_table=rows)
 
-@app.route("/show_all")
+@app.route("/erase_all")
 def Erase_all(): #Littéralement la même, sauf..
     db = get_db()
     cursor = db.cursor()
     cursor.execute("DELETE FROM pc",)
     db.commit() #save
-    jsonify("Everything was deleted..")
+    return jsonify("Everything was deleted..")
 
 @app.route("/read", methods=["GET", "POST"])
 def Read_function():
@@ -88,12 +88,28 @@ def Filt_function():
     if request.method == "POST":
         db = get_db()
         cursor = db.cursor()
-        Query = "SELECT * FROM pc"
+        query = "SELECT * FROM pc"
         name = request.form.get("nom_propriété")
         value = request.form.get("valeur_propriété")
         if value != "" and name != "":
-            Query += f" WHERE {name} = '{value}'"
-        cursor.execute(f"{Query}")
+            query += f" WHERE {name} = '{value}'"
+
+        order_suff = ""
+        ordre = request.form.get("ordre")
+        if ordre != "":
+            if ordre == "Alphabétique":
+                order_suff = "name ASC"
+            elif ordre == "Antéalphabétique":
+                order_suff = "name DESC"
+            elif ordre == "Date Croissant":
+                order_suff = "datetime(date) ASC"
+            elif ordre == "Date Décroissant":
+                order_suff = "datetime(date) DESC"
+        if order_suff != "":  # ✅ on ajoute seulement si order_suff est défini
+            query += f" ORDER BY {order_suff}"
+
+
+        cursor.execute(f"{query}")
         results = cursor.fetchall()
         db.close()
         return jsonify(results)
