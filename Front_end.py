@@ -105,9 +105,15 @@ def Filt_function():
                 order_suff = "datetime(date) ASC"
             elif ordre == "Date Décroissant":
                 order_suff = "datetime(date) DESC"
-        if order_suff != "":  # ✅ on ajoute seulement si order_suff est défini
+        if order_suff != "":
             query += f" ORDER BY {order_suff}"
 
+        limit_suff = ""
+        limit = request.form.get("limit")
+        if limit != "":
+            limit_suff = limit
+        if limit_suff != "":
+            query += f" LIMIT {limit_suff}"
 
         cursor.execute(f"{query}")
         results = cursor.fetchall()
