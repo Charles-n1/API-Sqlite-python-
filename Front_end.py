@@ -10,6 +10,16 @@ import sqlite3
 
 app = Flask(__name__)
 
+def name_already_exist(name): #On regarde, si le nom exsite déjà
+    cursor = mod_db()
+    cursor.execute("SELECT * FROM pc WHERE name = ?",
+        (name,)
+    )
+    if cursor.fetchone() == None:                     #Si, le nom n'a pas été trouvé, on renvoie faux (car le name n'existe pas), et true
+        return False
+    else :
+        return True
+
 def mod_db():
     db = sqlite3.connect("Alpha_version/Base_de_donnée.db") #Car Flask est continu, alors que mon prog originel ne s'active qu'une fois.
     cursor = db.cursor()
@@ -43,6 +53,10 @@ def Read_function():
     if request.method == "POST":
         name = request.form.get("nom")
         cursor = mod_db()
+
+        if name_already_exist(name) == False:
+            return jsonify(f"{name} doesn't exist.")
+
         cursor.execute("SELECT * FROM pc WHERE name = ?",          #SELECT toutes les doonées
             (name,)
         )
@@ -55,6 +69,10 @@ def Dele_function():
         db = get_db()
         cursor = db.cursor()
         name = request.form.get("nom")
+
+        if name_already_exist(name) == False:
+            return jsonify(f"{name} doesn't exist.")
+
         cursor.execute("DELETE FROM pc WHERE name = ?",
             (name,)
         )
@@ -74,6 +92,9 @@ def Insert_function(): #Insertion des données
         type_pc = request.form.get("type_pc")
         portabilité = request.form.get("portabilité")
         date = request.form.get("date")
+
+        if name_already_exist(name) == True:
+            return jsonify(f"{name} already exist.")
 
         cursor.execute("INSERT INTO pc(name, état, type_experience, type_pc, portabilité, date) VALUES (?, ?, ?, ?, ?, ?)",
             (name, état, type_experience, type_pc, portabilité, date)

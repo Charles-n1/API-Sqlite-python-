@@ -56,6 +56,3 @@ def Filt_function():
     rows = cursor.fetchall()
     for row in rows:                                         #On affiche tous colonne par colonne et on stocke dans rows
         print(row)
-
-# Afficher les résultats des propriétés ? Pour bien les tapers ?
-# Message d'erreur quand mauvais input

@@ -41,7 +41,7 @@ if __name__ == "__main__" :
 
 
     cursor.execute("INSERT INTO image(name, path) VALUES (?, ?)", #INSERTION D'image ici
-        ("Skibidi_toilet", "Images/Skibidi_Toilet_Normal.jpg",)
+        ("hello", "Images/hello.jpeg",)
     )
 
 
