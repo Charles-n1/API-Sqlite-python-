@@ -124,5 +124,8 @@ def Filt_function():
 if __name__ == "__main__":
     app.run(debug=True)
 
-    # Gestion d'erreur (y'en a masse)
-    # Rendre plus esthétique (1 seul fichier html please)*
+#- 1) Combos box (liste)
+#- 2) Erreur de gestion
+
+# Rixo eric cordega (Bernard truc)
+# 
